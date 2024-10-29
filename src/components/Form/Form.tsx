@@ -22,12 +22,14 @@ const Form: React.FC<{ onSubmit: (data: FormData) => void }> = ({
 }) => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmitHandler: SubmitHandler<FormData> = (data) => {
     onSubmit(data); // Call the passed in onSubmit function with the form data
+    reset();
   };
 
   return (
